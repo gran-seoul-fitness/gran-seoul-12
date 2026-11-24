@@ -359,7 +359,7 @@ main::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;
 .bk.open .pages{opacity:1}
 .bk .pages .pg img{width:38%;margin-bottom:4px}
 .bk .pg .ex{font-size:14px;margin:0 0 4px}
-.bk .pg .lockv{bottom:18px;font-size:11px;padding:6px 4px}
+.bk .pg .lockv{bottom:22px;font-size:11px;padding:6px 4px}
 .bk:not(.open) .leaf{opacity:0}
 .bk.done .cov,.bk.done .leaf{visibility:hidden}
 .leaf.flip{transform:rotateY(-180deg)}
@@ -1093,6 +1093,40 @@ body .sheet .ticket span{color:rgba(232,240,251,.8)}
 body .bar,body #hub .bar,body .gstat .gbar{height:10px;border-radius:99px;background:rgba(10,24,52,.32);box-shadow:inset 0 1px 2px rgba(0,0,0,.25),0 0 0 1px rgba(255,255,255,.18)}
 body #hub .bar{height:12px}
 body .bar .fill,body #hub .bar .fill,body .rare .bar .fill,body .gstat .gbar i{border-radius:99px;background:linear-gradient(90deg,#FFE3A0,#FFC261 45%,#F2963F)!important;box-shadow:0 0 12px rgba(255,170,80,.6),inset 0 1px 0 rgba(255,255,255,.55)!important}
+
+/* 비법서 맛보기: 넘겨 보는 페이지 */
+.bk{aspect-ratio:1.22}
+.bk .pages .pg{padding:10px 9px 18px}
+.bk .pages.turnL{animation:bkTurnL .34s ease}.bk .pages.turnR{animation:bkTurnR .34s ease}
+@keyframes bkTurnL{0%{opacity:1;transform:none}48%{opacity:0;transform:translateX(-8px)}52%{opacity:0;transform:translateX(8px)}100%{opacity:1;transform:none}}
+@keyframes bkTurnR{0%{opacity:1;transform:none}48%{opacity:0;transform:translateX(8px)}52%{opacity:0;transform:translateX(-8px)}100%{opacity:1;transform:none}}
+.pg .tag{margin:10px 0 0;text-align:center;font-family:var(--body);font-size:8.5px;letter-spacing:.14em;color:#9A4A26}
+.pg .intro{margin:10px 0 0;text-align:center;font-family:var(--body);font-size:12px;line-height:1.55;color:#3A2C1E}
+.pg .intro b{font-family:var(--display);font-size:14px;color:#7A2A20}
+.pg .qt{margin:14px 4px 0;text-align:center;font-size:11.5px;line-height:1.6;color:#5A4430;font-style:italic}
+.pg figure.shot{margin:2px auto 4px;width:62%;aspect-ratio:480/700;overflow:hidden;border-radius:10px;box-shadow:0 4px 10px rgba(80,50,20,.3);border:2px solid #fff;background:#fff}
+.bk .pages .pg figure.shot img{width:100%;height:auto;margin:0;filter:none}
+.pg .cap{margin:0;text-align:center;font-family:var(--body);font-size:10px;line-height:1.35;color:#6B5640}
+.pg ol.wk li{display:block;border-bottom:1px dotted #CDBB97;padding:5px 0}
+.pg ol.wk em{font-style:normal;font-size:10px;color:#9A4A26;font-weight:700;margin-right:5px}
+.pg ol.wk b{font-size:12.5px}
+.pg ol.wk small{display:block;font-family:var(--body);font-size:10px;color:#7A6450}
+.pg ul.gets{list-style:none;margin:0;padding:0;font-family:var(--body);font-size:11px;line-height:1.4;color:#3A2C1E}
+.pg ul.gets li{padding:5px 0;border-bottom:1px dotted #CDBB97}
+.pg ul.gets small{display:block;font-size:9.5px;color:#7A6450;padding-left:17px}
+.pg .exl{display:grid;grid-template-columns:1fr 1fr;gap:3px 5px}
+.pg .exl span{font-family:var(--body);font-size:9px;line-height:1.25;padding:3px 4px;border-radius:6px;background:rgba(255,255,255,.55);border:1px solid #DCC9A4;color:#3A2C1E;word-break:keep-all;text-align:center}
+.pg .exl span.more{grid-column:1/-1;background:#5A1A1C;color:#F6E3B8;border-color:#5A1A1C;font-weight:700;font-size:10px}
+.bknav{display:flex;align-items:center;justify-content:center;gap:14px;margin:8px 0 0}
+.bknav button{width:36px;height:36px;border-radius:50%;border:1.5px solid rgba(255,255,255,.7);background:rgba(255,255,255,.14);color:#fff;font-size:20px;line-height:1;cursor:pointer}
+.bknav button:disabled{opacity:.3;cursor:default}
+.bknav span{font-size:12.5px;color:#E8F0FB;min-width:44px;text-align:center}
+
+.bcode{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:16px 0 4px;padding:14px 14px 14px 18px;border-radius:18px;background:linear-gradient(180deg,rgba(255,255,255,.2),rgba(255,255,255,.1));border:1.5px dashed rgba(255,255,255,.6)}
+.bcode strong{font-family:ui-monospace,Menlo,monospace;font-size:20px;letter-spacing:.06em;color:#fff;user-select:all;-webkit-user-select:all}
+.bcode button{flex:none;border:1.5px solid rgba(255,255,255,.9);background:rgba(255,255,255,.92);color:#1C3561;font:inherit;font-size:13px;font-weight:700;padding:9px 12px;border-radius:99px;cursor:pointer}
+a.btn.bcgo{text-align:center;text-decoration:none}
+.bcnote{font-size:12px;color:rgba(232,240,251,.85);text-align:center;margin:8px 0 0;line-height:1.55}
 </style>
 </head>
 <body>
@@ -1645,7 +1679,7 @@ function render(){gameStat();
   const rl=$('rareLine');rl.hidden=true;rl.innerHTML=okW?'<b>지금 교환할 수 있어요!</b>':'비법서도 500P로 바꿀 수 있어요. <b>운동 인증 '+(NEED-S.work)+'회</b>만 더 하면 교환 가능!';
   $('rareCard').classList.toggle('open',gotB);$('rareLeft').textContent=gotB?'받았어요!':Math.min(bal,BOOK)+' / 500P';
   $('rareBar').style.width=gotB?'100%':Math.min(bal/BOOK*100,100)+'%';
-  $('bookBtn').hidden=!(!gotB&&bal>=BOOK&&okW);$('rareNote').innerHTML=gotB?'데스크에서 비법서를 받아 가세요.<br>새해에도 함께 운동하세!':'';
+  $('bookBtn').hidden=!(!gotB&&bal>=BOOK&&okW);$('rareNote').innerHTML=gotB?'<button type="button" class="btn bcgo" id="bcAgain">내 비법서 코드 보기</button>':'';if(gotB)$('bcAgain').addEventListener('click',showBookCode);
   
   let tc=0;document.querySelectorAll('.today .td a').forEach(a=>{const ok=!!did(a.dataset.k);a.classList.toggle('ok',ok);tc+=ok;});$('tdCnt').textContent=tc+'/4';$('dday').textContent=dday();
   const st=dietStage();['d1','d2','d3'].forEach((id,i)=>$(id).classList.toggle('on',i<st));
@@ -2273,33 +2307,67 @@ function redeem(kind){
   const cost=kind==='reward'?GOAL:BOOK,title=kind==='reward'?'해비치 어메니티 교환':'산타의 운동 비법서 교환';
   const bal=S.pts-S.spent;if(bal<cost||S.work<NEED)return;
   openSheet('<img loading="lazy" class="sheet-hero" src="assets/'+(kind==='reward'?'ic_trophy':'book')+'.webp" alt=""'+(kind==='book'?' style="border-radius:18px"':'')+'><h2 id="sheetTitle">'+title+'</h2><p>데스크 직원에게 이 화면을 보여주세요.</p><div class="ticket"><div><b>'+nm()+'</b><span>'+today+'</span></div><div><strong>'+cost.toLocaleString('ko-KR')+'P</strong><span>사용 예정 · 남는 포인트 '+(bal-cost).toLocaleString('ko-KR')+'P</span></div></div><button class="btn gold" type="button" id="doRedeem">직원 확인 완료</button><button class="close" type="button" id="cl">나중에 할게요</button>');
+  if(kind==='book'){const d=$('doRedeem');d.textContent='500P 쓰고 비법서 코드 받기';d.previousElementSibling.previousElementSibling.textContent='교환하면 바로 비법서를 여는 코드가 나와요.';
+    d.addEventListener('click',()=>{S.spent+=cost;S.redeem.book=today;S.redeem.bookKey=S.redeem.bookKey||(Date.now()+'-'+Math.random().toString(36).slice(2,8));save();
+      sendSheet({action:'redeem',reward:'비법서',points:cost});render();showBookCode();});
+    $('cl').addEventListener('click',closeSheet);return;}
   $('doRedeem').addEventListener('click',()=>{S.spent+=cost;S.redeem[kind]=today;save();sendSheet({action:'redeem',reward:kind==='reward'?'해비치 어메니티':'비법서',points:cost});closeSheet();render();
     say(kind==='reward'?(S.redeem.book?'허허, 어메니티까지 받았구먼! 자네가 올해의 운동왕이라네.':'해비치 어메니티를 골랐구먼! 포인트를 다시 500P 모으면 내 비법서도 받을 수 있다네.'):(S.redeem.reward?'쉿, 내 시크릿 선물이라네. 새해부터는 이 책과 함께 혼자서도 잘 해낼 걸세. 허허!':'내 시크릿 비법서를 골랐구먼! 새해엔 이 책이 자네 코치일세. 포인트를 다시 1,000P 모으면 해비치 어메니티도 받을 수 있다네.'));});
   $('cl').addEventListener('click',closeSheet);
 }
 $('redeemBtn').addEventListener('click',()=>redeem('reward'));
-/* 산타 비법서 앱 미리보기 팝업 (how-to-workout 저장소의 santa-preview.js를 필요할 때만 불러요) */
-let sbpLoad=null;
-function loadSBP(){return sbpLoad||(sbpLoad=new Promise((ok,no)=>{if(window.openSantaPreview)return ok();const sc=document.createElement('script');sc.src='https://gran-seoul-fitness.github.io/how-to-workout/preview/santa-preview.js';sc.onload=ok;sc.onerror=()=>{sbpLoad=null;no();};document.head.appendChild(sc);}));}
-async function bookPreview(){const bal=S.pts-(S.spent||0),gotB=!!(S.redeem&&S.redeem.book);
-  try{await loadSBP();}catch(e){redeem('book');return;}
-  openSantaPreview({points:gotB?undefined:bal,onExchange:()=>{if(gotB){say('비법서는 이미 받았구먼! 데스크에서 받아 가게나.');return;}
-    if(S.work<NEED){say('운동 인증 '+NEED+'회를 채우면 바로 바꿔 주겠네. 지금 '+S.work+'회라네.');return;}redeem('book');}});}
-$('bookBtn').addEventListener('click',bookPreview);
+$('bookBtn').addEventListener('click',()=>redeem('book'));
+/* ---------- 비법서 코드: 교환하면 바로 코드 → 복사 / 비법서 열기 ---------- */
+const BOOK_SITE='https://gran-seoul-fitness.github.io/how-to-workout/';
+const SANTA_API='https://script.google.com/macros/s/AKfycbwJ0iPLXn4fdekuz0tzj2RKMudeb2A9xVcnHEP6Vkmj2MCZS8dLU33nyo7Qefb17Rc/exec';
+async function getBookCode(){if(S.redeem.bookCode)return S.redeem.bookCode;
+  if(DEMO||TEST)return 'SANTA-TEST-0000';
+  const r=await(await fetch(SANTA_API,{method:'POST',body:JSON.stringify({action:'issue',name:nm(),company:S.company||'',key:S.redeem.bookKey||''})})).json();
+  if(!r||!r.ok||!/^SANTA-[A-Z0-9]{4}-[A-Z0-9]{4}$/.test(r.code||''))throw new Error(r&&r.err||'bad');
+  S.redeem.bookCode=r.code;save();return r.code;}
+async function showBookCode(){
+  openSheet('<img loading="lazy" class="sheet-hero" src="assets/book.webp" alt="" style="border-radius:18px"><h2 id="sheetTitle">산타의 운동 비법서 코드</h2><p id="bcMsg">산타가 코드를 꺼내는 중이라네…</p><div class="bcode" id="bcBox" hidden><strong id="bcCode"></strong><button type="button" id="bcCopy">코드 복사</button></div><a class="btn bcgo" id="bcGo" href="'+BOOK_SITE+'" target="_blank" rel="noopener" hidden>비법서 열러 가기 →</a><p class="bcnote" id="bcNote" hidden>비법서 첫 화면에 코드를 붙여 넣으면 열려요.<br>처음 연 휴대폰 1대에서만 쓸 수 있어요.</p><button class="close" type="button" id="cl">닫기</button>');
+  $('cl').addEventListener('click',closeSheet);
+  try{const c=await getBookCode();if(!$('bcCode'))return;
+    $('bcMsg').textContent=(DEMO||TEST)?'테스트 화면이라 예시 코드예요.':'자네만의 코드라네. 잃어버리면 여기서 다시 볼 수 있다네.';
+    $('bcCode').textContent=c;$('bcBox').hidden=false;$('bcNote').hidden=false;const go=$('bcGo');go.hidden=false;go.href=BOOK_SITE+'#code='+c;
+    $('bcCopy').addEventListener('click',async()=>{let ok=false;try{await navigator.clipboard.writeText(c);ok=true;}catch(e){const t=document.createElement('textarea');t.value=c;document.body.appendChild(t);t.select();try{ok=document.execCommand('copy');}catch(_){}t.remove();}
+      $('bcCopy').textContent=ok?'복사했어요 ✓':'길게 눌러 복사';});
+    say('내 비법서 코드라네. 새해엔 이 책이 자네 코치일세. 허허!');}
+  catch(e){if(!$('bcMsg'))return;$('bcMsg').innerHTML='코드를 받아오지 못했어요. 잠시 뒤 다시 눌러 주세요.<br>계속 안 되면 데스크에 말해 주세요.';
+    const rt=document.createElement('button');rt.className='btn';rt.type='button';rt.textContent='다시 받기';rt.addEventListener('click',showBookCode);$('bcMsg').after(rt);}
+}
 /* ---------- 비법서 맛보기 ---------- */
-$('peekBtn').addEventListener('click',()=>{
+/* 책(비법서 살짝 보기)을 누르면: 비법서 저장소의 앱 미리보기 팝업 그대로 */
+let sbpLoad=null;
+function loadSBP(){return sbpLoad||(sbpLoad=new Promise((ok,no)=>{if(window.openSantaPreview)return ok();const sc=document.createElement('script');sc.src=BOOK_SITE+'preview/santa-preview.js';sc.onload=ok;sc.onerror=()=>{sbpLoad=null;no();};document.head.appendChild(sc);}));}
+$('peekBtn').addEventListener('click',async()=>{const bal=S.pts-(S.spent||0),gotB=!!(S.redeem&&S.redeem.book);
+  try{await loadSBP();}catch(e){oldPeek();return;}
+  openSantaPreview({points:gotB?undefined:bal,onExchange:()=>{if(gotB){showBookCode();return;}
+    if(S.work<NEED){say('운동 인증 '+NEED+'회를 채우면 바로 바꿔 주겠네. 지금 '+S.work+'회라네.');return;}redeem('book');}});});
+function oldPeek(){
   const bal=S.pts-(S.spent||0),gotB=!!(S.redeem&&S.redeem.book),okW=S.work>=NEED,can=!gotB&&bal>=BOOK&&okW;
   const st=gotB?'이미 교환했어요. 데스크에서 받아 가세요!':bal<BOOK?'500P까지 '+(BOOK-bal).toLocaleString('ko-KR')+'P 남았어요':!okW?'운동 인증 '+(NEED-S.work)+'회만 더 하면 교환할 수 있어요':'지금 교환할 수 있어요!';
-  const left='<div class="pg l"><h4>차 례</h4><ol>'+['제1장 · 등','제2장 · 하체','제3장 · 가슴','제4장 · 어깨','제5장 · 코어','부록 · 새해 다짐'].map((t,i)=>'<li>'+t+'<span>'+(3+i*6)+'</span></li>').join('')+'</ol><div class="no">— 1 —</div></div>';
-  const right='<div class="pg r"><h4>제2장 · 하체</h4><div class="ex">스쿼트</div><img loading="lazy" src="assets/g_pat0.webp" alt="스쿼트 시범을 보이는 산타">'+
-   '<p class="st"><b>1.</b> 발은 어깨너비, 발끝은 살짝 바깥으로.</p><div class="blur"><p class="st"><b>2.</b> 엉덩이를 뒤로 빼며 의자에 앉듯</p><p class="st"><b>3.</b> 무릎은 발끝 방향으로</p></div>'+
-   '<div class="lockv">🔒 나머지는 산타의 시크릿 선물로 열어요</div><div class="no">— 9 —</div></div>';
+  const EXS=['고블릿 스쿼트','랫 풀다운','체스트 프레스','스미스 RDL','레그 프레스','케이블 푸시다운','힙 쓰러스트','페이스 풀','덤벨 숄더 프레스','데드버그','사이드 플랭크','벽 천사'];
+  const shot=(f,t)=>'<figure class="shot"><img src="assets/bk_'+f+'.webp" alt="'+t+' 화면"></figure><p class="cap">'+t+'</p>';
+  const SPREADS=[
+   ['<div class="pg l"><h4>산타의 운동 비법서</h4><p class="tag">SANTA\'S SECRET GIFT</p><p class="intro">그랑서울 피트니스 기구로 짠<br><b>나만의 4주 운동 앱</b></p><p class="qt">"새해부터는 자네 혼자서도<br>할 수 있다네."</p><div class="no">— 1 —</div></div>',
+    '<div class="pg r"><h4>3D로 보는 정확한 자세</h4>'+shot('ex3d','돌려 보고 앞·옆·뒤로 보기')+'<div class="no">— 2 —</div></div>'],
+   ['<div class="pg l"><h4>새해 4주 플랜</h4><ol class="wk">'+[['1주','몸 깨우기','2세트 · 자세 먼저'],['2주','기본 다지기','3세트 · 휴식 지키기'],['3주','한 단계 더','무게 한 칸 올리기'],['4주','나만의 루틴','기록 보고 스스로']].map(w=>'<li><em>'+w[0]+'</em><b>'+w[1]+'</b><small>'+w[2]+'</small></li>').join('')+'</ol><div class="no">— 3 —</div></div>',
+    '<div class="pg r"><h4>컨디션별 오늘의 운동</h4>'+shot('today','쌩쌩·보통·피곤에 맞춰 바뀌어요')+'<div class="no">— 4 —</div></div>'],
+   ['<div class="pg l"><h4>교환하면 얻는 것</h4><ul class="gets"><li>🧍 운동 46가지<small>그중 44가지는 3D로 시연</small></li><li>🔥 컨디션에 맞춰 바뀌는 루틴</li><li>🏋️ 우리 헬스장 기구 그대로</li><li>⏱️ 휴식 타이머와 하루 링</li><li>📚 산타의 서고<small>8~12월 웰니스 레터</small></li></ul><div class="no">— 5 —</div></div>',
+    '<div class="pg r"><h4>자세 체크와 쓰는 근육</h4>'+shot('cues','허리 중립, 골반 고정…')+'<div class="no">— 6 —</div></div>'],
+   ['<div class="pg l"><h4>기록과 오늘의 링</h4>'+shot('log','세트 체크 → 휴식 타이머')+'<div class="no">— 7 —</div></div>',
+    '<div class="pg r"><h4>산타의 서고</h4>'+shot('lib','레터 읽고 바로 운동으로')+'<div class="no">— 8 —</div></div>'],
+   ['<div class="pg l"><h4>담긴 운동 일부</h4><div class="exl">'+EXS.map(e=>'<span>'+e+'</span>').join('')+'<span class="more">외 34가지</span></div><div class="no">— 9 —</div></div>',
+    '<div class="pg r"><h4>제2장 · 하체</h4><div class="ex">스쿼트</div><img loading="lazy" src="assets/g_pat0.webp" alt="스쿼트 시범을 보이는 산타"><div class="blur"><p class="st"><b>1.</b> 발은 어깨너비, 발끝은 살짝 바깥으로.</p><p class="st"><b>2.</b> 엉덩이를 뒤로 빼며</p></div><div class="lockv">🔒 나머지는 산타의 시크릿 선물로 열어요</div><div class="no">— 10 —</div></div>']];
+  const left=SPREADS[0][0],right=SPREADS[0][1];
   openSheet('<h2 id="sheetTitle">산타의 운동 비법서</h2><p>살짝만 보여주겠네. 나머지는 직접 받아 가게나.</p>'+
    '<div class="bkwrap"><div class="bk" id="bk"><div class="pages">'+left+right+'</div>'+
    Array.from({length:7},(_,i)=>'<div class="leaf" style="z-index:'+(20-i)+'"></div>').join('')+
    '<div class="cov" style="z-index:30"><img src="assets/cover.webp" alt="산타의 운동 비법서 표지"><i></i></div></div></div>'+
+   '<div class="bknav"><button type="button" id="bkPrev" aria-label="이전 장">‹</button><span id="bkNo">1 / '+SPREADS.length+'</span><button type="button" id="bkNext" aria-label="다음 장">›</button></div>'+
    '<p style="margin-top:12px;text-align:center;color:var(--glow)">'+st+'</p>'+
-   '<button class="linkbtn" type="button" id="peekApp" style="display:block;margin:10px auto 0">📱 비법서 앱 화면 미리 보기</button>'+
    (can?'<button class="btn gold" type="button" id="peekBuy">500P로 교환하기</button>':'<button class="btn" type="button" aria-disabled="true">500P로 교환하기</button>')+
    '<button class="close" type="button" id="cl">닫기</button>');
   const bk=$('bk'),leaves=[...bk.querySelectorAll('.leaf')];
@@ -2307,10 +2375,14 @@ $('peekBtn').addEventListener('click',()=>{
     for(let i=0;i<leaves.length;i++){leaves[i].classList.add('flip');leaves[i].style.zIndex=10+i;await wait(i<2?160:90);}
     await wait(450);bk.classList.add('done');};
   if(reduce){bk.classList.add('open','done');}else go();
-  if(can)$('peekBuy').addEventListener('click',()=>{closeSheet();bookPreview();});
-  $('peekApp').addEventListener('click',()=>{closeSheet();bookPreview();});
+  let sp=0;const pgs=bk.querySelector('.pages');
+  const turn=d=>{const n=sp+d;if(n<0||n>=SPREADS.length)return;sp=n;pgs.classList.remove('turnL','turnR');void pgs.offsetWidth;pgs.classList.add(d>0?'turnL':'turnR');
+    setTimeout(()=>{pgs.innerHTML=SPREADS[sp][0]+SPREADS[sp][1];},reduce?0:170);$('bkNo').textContent=(sp+1)+' / '+SPREADS.length;$('bkPrev').disabled=sp===0;$('bkNext').disabled=sp===SPREADS.length-1;};
+  $('bkPrev').disabled=true;$('bkPrev').addEventListener('click',()=>turn(-1));$('bkNext').addEventListener('click',()=>turn(1));
+  {let x0=null;bk.addEventListener('touchstart',e=>{x0=e.touches[0].clientX},{passive:true});bk.addEventListener('touchend',e=>{if(x0===null)return;const dx=e.changedTouches[0].clientX-x0;x0=null;if(Math.abs(dx)>40)turn(dx<0?1:-1);});}
+  if(can)$('peekBuy').addEventListener('click',()=>{closeSheet();redeem('book');});
   $('cl').addEventListener('click',closeSheet);
-});
+}
 /* ---------- 굴뚝 (그랑서울 건물) ---------- */
 function chimMsg(p,ok){if(ok)return '쏙! 드디어 통과했다네. 그랑서울에 불이 다 켜졌구먼. 다 '+nm()+' 덕분일세!';if(p<.3)return '으으… 배가 꽉 끼었네. 이 배를 어쩐다… 민망하구먼.';if(p<.7)return '허허… 이거 참 민망하게 됐구먼. 조금 들어가긴 했는데 말일세.';return '아깝다네… 거의 다 왔는데. 배만 조금 더 넣으면 될 것 같구먼.';}
 let chimBusy=false;
