@@ -2096,9 +2096,9 @@ const db=(h,v)=>v?`<rect x="${(h[0]-3).toFixed(1)}" y="${(h[1]-8).toFixed(1)}" w
 const SH=(hip,tor)=>P2(hip,tor,LEN.torso);
 Object.assign(EX,{
  openbook:{mus:["chest","abs"],tempo:T=>{const c=T%6;const e=x=>(1-Math.cos(Math.PI*x))/2;return c<2.4?e(c/2.4):c<3.4?1:c<5.6?1-e((c-3.4)/2.2):0},
-   pose:t=>{const hip=[106,94],sh=[62,94],th=rad(L(0,180,t)),len=44,h=[sh[0]-4*Math.sin(th),sh[1]-len*Math.cos(th)],e=[(sh[0]+h[0])/2,(sh[1]+h[1])/2],h2=[sh[0]+2,sh[1]-44],e2=[sh[0]+1,sh[1]-22];
+   pose:t=>{const hip=[106,94],sh=[62,94],th=rad(L(0,180,t)),len=37,h=[sh[0]-4*Math.sin(th),sh[1]-len*Math.cos(th)],e=[(sh[0]+h[0])/2,(sh[1]+h[1])/2],h2=[sh[0]+2,sh[1]-37],e2=[sh[0]+1,sh[1]-18.5];
      return {hip,torso:180,feet:[[136,62],[139,60]],hands:h,knee:UP,elbow:UP,armJ:[[e,h],[e2,h2]]}},
-   props:(J,T)=>`<rect x="20" y="30" width="136" height="98" rx="8" style="fill:#7FA36B;opacity:.28"/><path d="M62 50 A44 44 0 0 0 62 138" style="fill:none;stroke:#8E2B2B;stroke-width:1;stroke-dasharray:2 2;opacity:.6"/><text x="88" y="140" class="lb2">위에서 본 모습 · 가슴을 열며 팔을 반대쪽으로</text>`},
+   props:(J,T)=>`<rect x="20" y="36" width="136" height="98" rx="8" style="fill:#7FA36B;opacity:.28"/><path d="M62 57 A37 37 0 0 0 62 131" style="fill:none;stroke:#8E2B2B;stroke-width:1;stroke-dasharray:2 2;opacity:.6"/><text x="88" y="26" class="lb2">위에서 본 모습 · 가슴을 열며 팔을 반대쪽으로</text>`},
 
  hipthrust:{mus:["glute","ham"],tempo:T=>{const c=T%4.4;const e=x=>(1-Math.cos(Math.PI*x))/2;return c<1.5?e(c/1.5):c<2.2?1:c<4?1-e((c-2.2)/1.8):0},
    pose:t=>{const sh=[34,92],a=L(30,-2,t),hip=[sh[0]+44*Math.cos(rad(a)),sh[1]+44*Math.sin(rad(a))];return {hip,torso:a+180,feet:[[104,124],[108,124]],hands:[hip[0]-3,hip[1]-6],hands2:[hip[0]+1,hip[1]-6],knee:UP,elbow:DOWN}},
@@ -2242,7 +2242,7 @@ function openMission(i,from){
   ov.innerHTML='<div class="mpop" id="mform"><div class="mhead"><span class="mno">'+(i+1)+'</span><div><small>Advent No.'+String(i+1).padStart(2,'0')+' · '+m.n+'</small><h3 id="mName">'+m.v[variant]+'</h3><p class="rep">'+(m.rep||'12회 × 3세트')+'</p></div></div><div class="mhow"><div class="mgear" id="mGear">'+figSVG(m.id,variant)+'</div><ol id="mSteps">'+stepsOf(m.id,variant).map(t=>'<li>'+t+'</li>').join('')+'</ol></div><p class="mcue">포인트 · '+m.cue+'</p>'
    +(vs.length>1?'<div class="vtabs" role="tablist" aria-label="운동 방식">'+vs.map((v,k)=>'<button type="button" role="tab" class="vt'+(k?'':' on')+'" aria-selected="'+(!k)+'" data-v="'+v+'">'+v+'</button>').join('')+'</div>':'')
    +(S.company?'':'<label class="cmp">입주사<select id="mCmp"><option value="">선택해 주세요</option>'+COMPANIES.map(c=>'<option>'+c+'</option>').join('')+'</select></label>')
-   +'<label class="mphoto" id="mPh"><input type="file" accept="image/*" id="mFile"><span id="mPhT">＋ 인증 사진 올리기</span><img loading="lazy" id="mPrev" alt="" hidden></label>'
+   +'<label class="mphoto" id="mPh"><input type="file" accept="image/*" capture="environment" id="mFile"><span id="mPhT">＋ 인증 사진 찍기</span><img loading="lazy" id="mPrev" alt="" hidden></label>'
    +'<div class="err" id="mErr" aria-live="polite"></div><button class="btn" type="button" id="mDo">인증 완료<span class="pts">+90P</span></button><button class="close" type="button" id="mBack">다른 서랍 고르기</button></div>';
   document.body.appendChild(ov);
   requestAnimationFrame(()=>{ov.classList.add('m-in');requestAnimationFrame(()=>ov.classList.add('m-open','m-pop'));});
@@ -2257,7 +2257,7 @@ function openMission(i,from){
   ov.querySelector('#mDo').addEventListener('click',()=>{const err=ov.querySelector('#mErr');
     const cmpSel=ov.querySelector('#mCmp');if(cmpSel&&!cmpSel.value){err.textContent='입주사를 골라 주세요.';cmpSel.focus();return;}
     
-    if(!photo&&!DEMO){err.textContent='인증 사진을 올려 주세요.';return;}
+    if(!photo&&!DEMO){err.textContent='인증 사진을 찍어 주세요.';return;}
     if(cmpSel)S.company=cmpSel.value;
     mark('work');S.work++;doneM()[m.id]={v:variant,d:today};parts.forEach(c=>S.cats[c]=(S.cats[c]||0)+1);save();
     sendSheet({action:'stamp',missionId:m.id,title:m.v[variant],variant,parts:[...parts],photo});
