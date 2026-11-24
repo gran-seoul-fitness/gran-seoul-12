@@ -2278,7 +2278,14 @@ function redeem(kind){
   $('cl').addEventListener('click',closeSheet);
 }
 $('redeemBtn').addEventListener('click',()=>redeem('reward'));
-$('bookBtn').addEventListener('click',()=>redeem('book'));
+/* 산타 비법서 앱 미리보기 팝업 (how-to-workout 저장소의 santa-preview.js를 필요할 때만 불러요) */
+let sbpLoad=null;
+function loadSBP(){return sbpLoad||(sbpLoad=new Promise((ok,no)=>{if(window.openSantaPreview)return ok();const sc=document.createElement('script');sc.src='https://gran-seoul-fitness.github.io/how-to-workout/preview/santa-preview.js';sc.onload=ok;sc.onerror=()=>{sbpLoad=null;no();};document.head.appendChild(sc);}));}
+async function bookPreview(){const bal=S.pts-(S.spent||0),gotB=!!(S.redeem&&S.redeem.book);
+  try{await loadSBP();}catch(e){redeem('book');return;}
+  openSantaPreview({points:gotB?undefined:bal,onExchange:()=>{if(gotB){say('비법서는 이미 받았구먼! 데스크에서 받아 가게나.');return;}
+    if(S.work<NEED){say('운동 인증 '+NEED+'회를 채우면 바로 바꿔 주겠네. 지금 '+S.work+'회라네.');return;}redeem('book');}});}
+$('bookBtn').addEventListener('click',bookPreview);
 /* ---------- 비법서 맛보기 ---------- */
 $('peekBtn').addEventListener('click',()=>{
   const bal=S.pts-(S.spent||0),gotB=!!(S.redeem&&S.redeem.book),okW=S.work>=NEED,can=!gotB&&bal>=BOOK&&okW;
@@ -2292,6 +2299,7 @@ $('peekBtn').addEventListener('click',()=>{
    Array.from({length:7},(_,i)=>'<div class="leaf" style="z-index:'+(20-i)+'"></div>').join('')+
    '<div class="cov" style="z-index:30"><img src="assets/cover.webp" alt="산타의 운동 비법서 표지"><i></i></div></div></div>'+
    '<p style="margin-top:12px;text-align:center;color:var(--glow)">'+st+'</p>'+
+   '<button class="linkbtn" type="button" id="peekApp" style="display:block;margin:10px auto 0">📱 비법서 앱 화면 미리 보기</button>'+
    (can?'<button class="btn gold" type="button" id="peekBuy">500P로 교환하기</button>':'<button class="btn" type="button" aria-disabled="true">500P로 교환하기</button>')+
    '<button class="close" type="button" id="cl">닫기</button>');
   const bk=$('bk'),leaves=[...bk.querySelectorAll('.leaf')];
@@ -2299,7 +2307,8 @@ $('peekBtn').addEventListener('click',()=>{
     for(let i=0;i<leaves.length;i++){leaves[i].classList.add('flip');leaves[i].style.zIndex=10+i;await wait(i<2?160:90);}
     await wait(450);bk.classList.add('done');};
   if(reduce){bk.classList.add('open','done');}else go();
-  if(can)$('peekBuy').addEventListener('click',()=>{closeSheet();redeem('book');});
+  if(can)$('peekBuy').addEventListener('click',()=>{closeSheet();bookPreview();});
+  $('peekApp').addEventListener('click',()=>{closeSheet();bookPreview();});
   $('cl').addEventListener('click',closeSheet);
 });
 /* ---------- 굴뚝 (그랑서울 건물) ---------- */
