@@ -1406,7 +1406,7 @@ async function secretTalk(first){
   const bal=S.pts-(S.spent||0),row=(v,t,ok)=>'<li'+(ok?' class="ok"':'')+'><b>'+v+'</b><span>'+t+'</span></li>';
   $('secH').textContent=first?'흠흠, 작전은 간단하다네.':'흠흠, 지금 상황을 보세나.';
   $('secRows').innerHTML=first
-    ?row('+90P','운동 인증 1회마다')+row('1,000P','해비치 어메니티로 교환')+row('500P','산타의 비법서로 교환')
+    ?row('인증 1회','포인트 + 랜덤 선물 상자 뽑기')+row('1,000P','해비치 어메니티로 교환')+row('500P','산타의 비법서로 교환')
     :row(bal.toLocaleString('ko-KR')+'P','지금 쓸 수 있는 포인트',bal>=BOOK)+row(S.work+' / 8회','운동 인증',S.work>=NEED)+row(S.redeem&&S.redeem.reward?'완료':'1,000P','해비치 어메니티',S.redeem&&S.redeem.reward)+row(S.redeem&&S.redeem.book?'완료':'500P','산타의 비법서',S.redeem&&S.redeem.book);
   $('secRule').innerHTML=first?'모은 포인트로 받고 싶은 선물을 고르게. 1,500P면 둘 다 받는다네.<br>단, 교환은 <b>운동 인증 8회</b>부터일세.':'게임 포인트만으로는 굴뚝을 못 지나간다네.<br>교환은 <b>운동 인증 8회</b>부터일세.';
   $('secP').textContent=first?'자네가 운동할 때마다 내 배도, 이 방의 쿠키도 줄어들 걸세.':'';
