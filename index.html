@@ -1209,7 +1209,7 @@ a.btn.bcgo{text-align:center;text-decoration:none}
     </section>
     <section class="section" aria-labelledby="ptsLbl">
       <div class="slab glass ">
-        <div class="hero"><div class="ht"><h2 id="ptsLbl">내 포인트</h2><p class="hp">운동 인증 <b>+90P</b><br>선물 뽑기 <b>+10~20P</b></p></div><div class="obj o-work" style="aspect-ratio:961/625" aria-hidden="true"><img loading="lazy" class="L base" src="assets/o_work_base.webp?v=4" alt="" decoding="async"><img loading="lazy" class="L body" src="assets/o_work_body.webp?v=4" alt="" decoding="async"><img loading="lazy" class="L lid" src="assets/o_work_lid.webp?v=4" alt="" decoding="async"><img loading="lazy" class="L flake" src="assets/o_work_flake.webp?v=4" alt="" decoding="async"><img loading="lazy" class="L la" src="assets/o_work_la.webp?v=4" alt="" decoding="async"><img loading="lazy" class="L lb" src="assets/o_work_lb.webp?v=4" alt="" decoding="async"></div></div>
+        <div class="hero"><div class="ht"><h2 id="ptsLbl">내 포인트</h2><p class="hp">인증마다 <b>포인트</b><br>+ <b>선물 상자</b> 뽑기</p></div><div class="obj o-work" style="aspect-ratio:961/625" aria-hidden="true"><img loading="lazy" class="L base" src="assets/o_work_base.webp?v=4" alt="" decoding="async"><img loading="lazy" class="L body" src="assets/o_work_body.webp?v=4" alt="" decoding="async"><img loading="lazy" class="L lid" src="assets/o_work_lid.webp?v=4" alt="" decoding="async"><img loading="lazy" class="L flake" src="assets/o_work_flake.webp?v=4" alt="" decoding="async"><img loading="lazy" class="L la" src="assets/o_work_la.webp?v=4" alt="" decoding="async"><img loading="lazy" class="L lb" src="assets/o_work_lb.webp?v=4" alt="" decoding="async"></div></div>
         <div class="panel">
           <div class="head" style="justify-content:flex-end" hidden><span class="label" id="leftTxt">어메니티까지 1,000P</span></div>
           <div class="big"><span id="pts">0</span><small id="ptsGoal"> / 1,000P</small></div>
@@ -2277,7 +2277,7 @@ function openMission(i,from){
    +(vs.length>1?'<div class="vtabs" role="tablist" aria-label="운동 방식">'+vs.map((v,k)=>'<button type="button" role="tab" class="vt'+(k?'':' on')+'" aria-selected="'+(!k)+'" data-v="'+v+'">'+v+'</button>').join('')+'</div>':'')
    +(S.company?'':'<label class="cmp">입주사<select id="mCmp"><option value="">선택해 주세요</option>'+COMPANIES.map(c=>'<option>'+c+'</option>').join('')+'</select></label>')
    +'<label class="mphoto" id="mPh"><input type="file" accept="image/*" capture="environment" id="mFile"><span id="mPhT">＋ 인증 사진 찍기</span><img loading="lazy" id="mPrev" alt="" hidden></label>'
-   +'<div class="err" id="mErr" aria-live="polite"></div><button class="btn" type="button" id="mDo">인증 완료<span class="pts">+90P</span></button><button class="close" type="button" id="mBack">다른 서랍 고르기</button></div>';
+   +'<div class="err" id="mErr" aria-live="polite"></div><button class="btn" type="button" id="mDo">인증 완료</button><button class="close" type="button" id="mBack">다른 서랍 고르기</button></div>';
   document.body.appendChild(ov);
   requestAnimationFrame(()=>{ov.classList.add('m-in');requestAnimationFrame(()=>ov.classList.add('m-open','m-pop'));});
   runFig();
